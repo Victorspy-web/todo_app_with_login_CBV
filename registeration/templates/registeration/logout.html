@@ -1,0 +1,12 @@
+{% extends "registeration/base.html" %}
+
+{% block content %}
+
+<h1 class="logout-top">Logout administration</h1>
+<h2 class="logout-middle"><a class="logout-home" href="{% url 'tasks' %}">Home</a></h2>
+<h1>Logged out</h1>
+<p><b>Thanks for spending some quality time with the Web site today.</b></p>
+
+<a class="logout-down" href="{% url 'login' %}">Log in again</a>
+
+{% endblock content %}

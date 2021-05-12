@@ -1,0 +1,58 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+<h2>Hello, {{ request.user|title }}!</h2>
+<h3>You have <i>{{ count }}</i> incomplete task{{ count|pluralize:"s" }}</h3>
+
+<a href="{% url 'logout' %}">
+    <h3>Logout</h3>
+</a>
+{% else %}
+<a href="{% url 'login' %}">
+    <h3>Login</h3>
+</a>
+{% endif %}
+
+<hr>
+<h1>My To Do Website</h1>
+
+<a href="{% url 'task-create' %}">+Tasks</a>
+
+<form action="" method="get">
+    <input type="text" name="search-area" value="{{ search_input }}">
+    <input type="submit" value="Search">
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Item</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+
+        <tr>
+            {% if task.complete %}
+            <td><strike><a class="nav-link" href="{% url 'task' task.id %}">{{ task }}</a></strike></td>
+            {% else %}
+            <td class="nav-link"><a href="{% url 'task' task.id %}">{{ task }}</a></td>
+            {% endif %}
+        </tr>
+
+        <tr>
+            <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
+            <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
+        </tr>
+        {% empty %}
+            <h3>No Tasks Available!</h3>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock content %}

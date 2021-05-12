@@ -1,0 +1,20 @@
+{% extends "registeration/base.html" %}
+
+{% block content %}
+
+<h1>Register</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <div>{{ field.label }}
+        {{ field }}</div><br>
+        {% endfor %}
+        <input type="submit" value="Register">
+    </form>
+
+    {{ form.errors }}
+
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+
+{% endblock content %}

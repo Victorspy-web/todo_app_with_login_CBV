@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body a{
+    text-decoration: none;
+}
+
+.logout-top {
+    background-color: #417690;
+}
+
+.logout-middle {
+    background-color: #79aec8;
+}
+
+.logout-down {
+    color: #447e9b;
+}
+
+.logout-home {
+    color: blue;
+}
